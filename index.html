@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Website Name</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* =============== GLOBAL STYLES =============== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  line-height: 1.6;
+  background: #f8f9fa;
+  color: #333;
+}
+
+/* Smooth scroll */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Container helper */
+.content-section {
+  padding: 80px 10%;
+  text-align: center;
+}
+
+/* Headings */
+h1, h2, h3 {
+  margin-bottom: 20px;
+  font-weight: 700;
+  color: #222;
+}
+
+/* =============== HEADER / NAVBAR =============== */
+.header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: black;
+  padding: 15px 10%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 999;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #fff;
+  text-transform: uppercase;
+}
+
+.navbar ul {
+  list-style: none;
+  display: flex;
+  gap: 25px;
+}
+
+.navbar ul li a {
+  text-decoration: none;
+  color: #fff;
+  font-weight: 500;
+  transition: 0.3s;
+}
+
+.navbar ul li a:hover {
+  color: #ffe082;
+}
+
+/* Mobile menu */
+.menu-toggle {
+  display: none;
+  font-size: 1.8rem;
+  color: #fff;
+  cursor: pointer;
+}
+
+/* =============== HERO SECTION =============== */
+.hero {
+  background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.6)),
+              url("banner.jpg") center/cover no-repeat;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 10%;
+  text-align: center;
+  color: #fff;
+}
+
+.hero-content h1 {
+  font-size: 2.5rem;
+  margin-bottom: 15px;
+}
+
+.hero-content p {
+  font-size: 1.1rem;
+  margin-bottom: 20px;
+}
+
+.cta-button {
+  background: #ffe082;
+  color: #222;
+  padding: 12px 25px;
+  text-decoration: none;
+  border-radius: 30px;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+.cta-button:hover {
+  background: #fff59d;
+}
+
+/* =============== ABOUT SECTION =============== */
+.about-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  align-items: center;
+}
+
+.about-image img {
+  max-width: 50%;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.about-text {
+  flex: 1;
+  text-align: left;
+}
+
+/* =============== SERVICES SECTION =============== */
+.services-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 25px;
+  margin-top: 30px;
+}
+
+.service-card {
+  background: #fff;
+  padding: 25px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+  transition: 0.3s;
+}
+
+.service-card:hover {
+  transform: translateY(-5px);
+}
+
+/* =============== TEAM SECTION =============== */
+.team-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 25px;
+}
+
+.team-member {
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+  transition: 0.3s;
+}
+
+.team-member:hover {
+  transform: scale(1.05);
+}
+
+.team-member img {
+  width: 100%;
+  border-radius: 10px;
+  margin-bottom: 15px;
+}
+
+/* =============== REVIEWS SECTION =============== */
+.reviews-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 25px;
+}
+
+.review-card {
+  background: #fff;
+  padding: 20px;
+  border-left: 5px solid #0ea5a4;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+  text-align: left;
+}
+
+/* =============== PORTFOLIO SECTION =============== */
+.portfolio-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 25px;
+}
+
+.portfolio-item {
+  position: relative;
+  overflow: hidden;
+  border-radius: 10px;
+}
+
+.portfolio-item img {
+  width: 100%;
+  transition: 0.4s;
+  display: block;
+}
+
+.item-overlay {
+  position: absolute;
+  bottom: -100%;
+  left: 0;
+  width: 100%;
+  padding: 20px;
+  background: rgba(14,165,164,0.9);
+  color: #fff;
+  transition: 0.4s;
+  text-align: center;
+}
+
+.portfolio-item:hover img {
+  transform: scale(1.1);
+}
+
+.portfolio-item:hover .item-overlay {
+  bottom: 0;
+}
+
+/* =============== CONTACT SECTION =============== */
+.contact-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.contact-container :hover {
+    width: 60%;
+}
+
+.contact-info {
+  background: #fff;
+  padding: 25px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+}
+.contact-info :hover {
+    background-color: #ffe082;
+}
+
+/* =============== FOOTER =============== */
+.footer {
+  background: #010f0f;
+  color: #fff;
+  text-align: center;
+  padding: 20px 0;
+}
+
+/* =============== SOCIAL BUTTONS =============== */
+.social-buttons {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.social-buttons a {
+  width: 45px;
+  height: 45px;
+  background: #c20984;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  font-size: 1.4rem;
+  transition: 0.3s;
+  text-decoration: none;
+}
+
+.social-buttons a:hover {
+  background: #066666;
+}
+
+/* =============== RESPONSIVE QUERIES =============== */
+@media (max-width: 992px) {
+  .about-container {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .about-text {
+    text-align: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    display: none;
+    position: absolute;
+    top: 70px;
+    right: 0;
+    background: #0ea5a4;
+    width: 100%;
+    text-align: center;
+    padding: 20px 0;
+  }
+
+  .navbar ul {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+
+  .hero-content h1 {
+    font-size: 1.8rem;
+  }
+  /* Fade-in Animation */
+.content-section, .hero {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 0.8s ease-out;
+}
+.content-section.visible, .hero.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Mobile Navbar */
+.navbar.active {
+    display: block !important;
+}
+
+/* Active Menu Highlight */
+.navbar a.active {
+    color: #ffe082;
+    font-weight: 700;
+    border-bottom: 2px solid #ffe082;
+}
+
+/* Back to Top Button */
+.back-to-top {
+    position: fixed;
+    bottom: 25px;
+    left: 25px;
+    padding: 12px 15px;
+    border: none;
+    border-radius: 50%;
+    font-size: 18px;
+    background: #0ea5a4;
+    color: #fff;
+    cursor: pointer;
+    display: none;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    transition: 0.3s;
+}
+.back-to-top:hover {
+    background: #066666;
+}
+}
+
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <div class="logo">digital idea</div>
+        <nav class="navbar">
+            <ul>
+                <li><a href="#welcome">Welcome</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#team">Team</a></li>
+                <li><a href="#reviews">Reviews</a></li>
+                <li><a href="#portfolio">Portfolio</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="welcome" class="hero">
+        <div class="hero-content">
+            <h1>Welcome to Our Digital idea</h1>
+            <p>Crafting stunning websites and powerful online experiences.</p>
+            <a href="#services" class="cta-button">Explore Our Services</a>
+        </div>
+    </section>
+
+    <section id="about" class="content-section">
+        <h2>About Us</h2>
+        <div class="about-container">
+            <div class="about-image">
+                <img src="logo.png" alt="About Our Company">
+            </div>
+            <div class="about-text">
+                <p>We are a dedicated team of creative professionals passionate about bringing your ideas to life. With years of experience in web design, development, and digital marketing, we help businesses like yours grow and succeed in the ever-evolving online landscape.</p>
+                <p>Our mission is to build not just websites, but lasting digital partnerships, offering innovative solutions and unparalleled support. We believe in transparency, collaboration, and delivering results that exceed expectations.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="content-section services-section">
+        <h2>Our Services</h2>
+        <div class="services-container">
+            <div class="service-card">
+                <h3>Web Design</h3>
+                <p>Beautiful, responsive, and user-friendly websites tailored to your brand identity.</p>
+            </div>
+            <div class="service-card">
+                <h3>Web Development</h3>
+                <p>Robust and scalable web solutions powered by the latest technologies.</p>
+            </div>
+            <div class="service-card">
+                <h3>SEO & Marketing</h3>
+                <p>Strategies to boost your visibility, attract customers, and drive growth.</p>
+            </div>
+            <div class="service-card">
+                <h3>E-Commerce</h3>
+                <p>Secure and intuitive online stores designed to maximize your sales.</p>
+            </div>
+            <div class="service-card">
+                <h3>Goole and youtube Ads</h3>
+                <p>I Well Create a Best Ads On Your</p>
+            </div>
+            <div class="service-card">
+                <h3>Facbook and Instagram ads</h3>
+                <p>I Well Create a Best Ads On Your</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="team" class="content-section team-section">
+        <h2>Meet Our Team</h2>
+        <div class="team-container">
+            <div class="team-member">
+                <img src="ceo.webp" alt="Team Member Name">
+                <h3>Siman</h3>
+                <p>CEO OF DIGITAL IDEA</p>
+            </div>
+            <div class="team-member">
+                <img src="font.jpg" alt="Team Member Name">
+                <h3>SS Anik</h3>
+                <p>Frontend Developer</p>
+            </div>
+            <div class="team-member">
+                <img src="back.webp" alt="Team Member Name">
+                <h3>Mahir Faysal</h3>
+                <p>Backend Developer</p>
+            </div>
+        
+        <div class="team-member">
+                <img src="Screenshot 2025-06-19 231450.png" alt="Team Member Name">
+                <h3>RT RAHI</h3>
+                <p>Meta  Ads Expert</p>
+            </div>
+            <div class="team-member">
+                <img src="rafi.jpg" alt="Team Member Name">
+                <h3>SH RAFI</h3>
+                <p>Goole ADS Expert</p>
+            </div>
+            <div class="team-member">
+                <img src="seo.webp" alt="Team Member Name">
+                <h3>Nazrul </h3>
+                <p>SEO Expert</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="reviews" class="content-section reviews-section">
+        <h2>Client Reviews</h2>
+        <div class="reviews-container">
+            <div class="review-card">
+                <p>"Working with this team was an absolute pleasure. They delivered a beautiful website ahead of schedule!"</p>
+                <span>- Sarah K.</span>
+            </div>
+            <div class="review-card">
+                <p>"Professional, responsive, and truly experts in their field. We saw a significant increase in traffic."</p>
+                <span>- Michael D.</span>
+            </div>
+            <div class="review-card">
+                <p>"They transformed our online presence and helped us connect with our customers in a whole new way."</p>
+                <span>- David R.</span>
+            </div>
+        </div>
+    </section>
+
+    <section id="portfolio" class="content-section portfolio-section">
+        <h2>Our Portfolio</h2>
+        <div class="portfolio-container">
+            <div class="portfolio-item">
+                <img src="ChatGPT Image Aug 11, 2025, 01_09_40 AM.png" alt="Project 1">
+                <div class="item-overlay">
+                    <h3>The Bite</h3>
+                    <p>Meta Ads Reselt 30 Day</p>
+                </div>
+            </div>
+            <div class="portfolio-item">
+                <img src="goole a.png" alt="Project 2">
+                <div class="item-overlay">
+                    <h3>MR SULATION</h3>
+                    <p>Goole Ads Last 7 Day Reselt</p>
+                </div>
+            </div>
+            <div class="portfolio-item">
+                <img src="car.png" alt="Project 3">
+                <div class="item-overlay">
+                    <h3>Autodrive</h3>
+                    <p>Brand Website</p>
+                </div>
+            </div>
+            <div class="portfolio-item">
+                <img src="e-com.png" alt="Project 4">
+                <div class="item-overlay">
+                    <h3>Onli top</h3>
+                    <p>Brend Website</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="contact" class="content-section contact-section">
+        <h2>Get In Touch</h2>
+       <div class="contact-container">
+             
+            <div class="contact-info">
+                <h3>Contact Information</h3>
+                <p>loskorhat road,feni City</p>
+                <p>disitalidea@gmail.com</p>
+                <p>+8801721029591</p>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <p>&copy; 2025 Disital idea. All rights reserved.</p>
+    </footer>
+
+    <div class="social-buttons">
+        <a href="https://wa.me/8801830421035" target="_blank" class="whatsapp-button">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+        <a href="https://t.me/8801830421035" target="_blank" class="telegram-button">
+            <i class="fab fa-telegram-plane"></i>
+        </a>
+    </div>
+ 
+<script>
+// ================= MOBILE MENU TOGGLE =================
+const menuToggle = document.createElement("div");
+menuToggle.classList.add("menu-toggle");
+menuToggle.innerHTML = '<i class="fas fa-bars"></i>';
+document.querySelector(".header").appendChild(menuToggle);
+
+const navbar = document.querySelector(".navbar");
+menuToggle.addEventListener("click", () => {
+    navbar.classList.toggle("active");
+    menuToggle.innerHTML = navbar.classList.contains("active") 
+        ? '<i class="fas fa-times"></i>' 
+        : '<i class="fas fa-bars"></i>';
+});
+
+// ================= SMOOTH SCROLL =================
+document.querySelectorAll('.navbar a, .cta-button').forEach(anchor => {
+    anchor.addEventListener("click", function(e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute("href")).scrollIntoView({
+            behavior: "smooth"
+        });
+        navbar.classList.remove("active"); // mobile menu বন্ধ হবে
+        menuToggle.innerHTML = '<i class="fas fa-bars"></i>';
+    });
+});
+
+// ================= FADE-IN ANIMATION =================
+const sections = document.querySelectorAll(".content-section, .hero");
+const fadeIn = () => {
+    sections.forEach(sec => {
+        const secTop = sec.getBoundingClientRect().top;
+        if(secTop < window.innerHeight - 100){
+            sec.classList.add("visible");
+        }
+    });
+};
+window.addEventListener("scroll", fadeIn);
+fadeIn();
+
+// ================= BACK TO TOP BUTTON =================
+const backToTop = document.createElement("button");
+backToTop.innerHTML = "↑";
+backToTop.classList.add("back-to-top");
+document.body.appendChild(backToTop);
+
+window.addEventListener("scroll", () => {
+    if(window.scrollY > 400){
+        backToTop.style.display = "block";
+    } else {
+        backToTop.style.display = "none";
+    }
+});
+backToTop.addEventListener("click", () => {
+    window.scrollTo({top: 0, behavior: "smooth"});
+});
+
+// ================= ACTIVE MENU HIGHLIGHT =================
+const menuLinks = document.querySelectorAll(".navbar a");
+window.addEventListener("scroll", () => {
+    let current = "";
+    sections.forEach(sec => {
+        const secTop = sec.offsetTop - 120;
+        if(scrollY >= secTop){
+            current = sec.getAttribute("id");
+        }
+    });
+    menuLinks.forEach(link => {
+        link.classList.remove("active");
+        if(link.getAttribute("href") === "#" + current){
+            link.classList.add("active");
+        }
+    });
+});
+</script>
+</body>
+</html>
