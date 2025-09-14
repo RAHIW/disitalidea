@@ -18,7 +18,7 @@
 body {
   font-family: "Poppins", sans-serif;
   line-height: 1.6;
-  background: #f8f9fa;
+  background: linear-gradient(120deg, #b4b108, #e5e6ec, #997604);
   color: #333;
 }
 
@@ -87,40 +87,88 @@ h1, h2, h3 {
 
 /* =============== HERO SECTION =============== */
 .hero {
-  background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.6)),
-              url("banner.jpg") center/cover no-repeat;
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0 10%;
-  text-align: center;
-  color: #fff;
-}
+      position: relative;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      text-align: center;
+      overflow: hidden;
+      background: linear-gradient(120deg, #a5082a, #040b69, #997604);
+      background-size: 300% 300%;
+      animation: gradientMove 5s ease infinite;
+    }
 
-.hero-content h1 {
-  font-size: 2.5rem;
-  margin-bottom: 15px;
-}
+    @keyframes gradientMove {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
 
-.hero-content p {
-  font-size: 1.1rem;
-  margin-bottom: 20px;
-}
+    /* Floating 3D circles */
+    .circle {
+      position: absolute;
+      border-radius: 50%;
+      background: rgba(6, 150, 18, 0.15);
+      box-shadow: 0 0 20px rgba(255,255,255,0.3);
+      animation: float 10s infinite ease-in-out;
+    }
 
-.cta-button {
-  background: #ffe082;
-  color: #222;
-  padding: 12px 25px;
-  text-decoration: none;
-  border-radius: 30px;
-  font-weight: 600;
-  transition: 0.3s;
-}
+    .circle:nth-child(1) {
+      width: 150px; height: 150px;
+      top: 10%; left: 15%;
+      animation-duration: 18s;
+    }
 
-.cta-button:hover {
-  background: #fff59d;
-}
+    .circle:nth-child(2) {
+      width: 100px; height: 100px;
+      top: 60%; left: 25%;
+      animation-duration: 12s;
+    }
+
+    .circle:nth-child(3) {
+      width: 200px; height: 200px;
+      top: 30%; left: 70%;
+      animation-duration: 20s;
+    }
+
+    .circle:nth-child(4) {
+      width: 120px; height: 120px;
+      top: 80%; left: 80%;
+      animation-duration: 5s;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0) rotate(0deg); }
+      50% { transform: translateY(-50px) rotate(180deg); }
+    }
+
+    /* Content */
+    .hero-content h1 {
+      font-size: 3rem;
+      margin-bottom: 15px;
+      color: #8b058b;
+    }
+
+    .hero-content p {
+      font-size: 1.2rem;
+      margin-bottom: 20px;
+    }
+
+    .cta-button {
+      background: #ffe082;
+      color: #020202;
+      padding: 12px 25px;
+      text-decoration: none;
+      border-radius: 30px;
+      font-weight: 600;
+      transition: 0.3s;
+    }
+
+    .cta-button:hover {
+      background: #091c72;
+    }
 
 /* =============== ABOUT SECTION =============== */
 .about-container {
@@ -396,19 +444,25 @@ h1, h2, h3 {
         </nav>
     </header>
 
-    <section id="welcome" class="hero">
-        <div class="hero-content">
-            <h1>Welcome to Our Digital idea</h1>
-            <p>Crafting stunning websites and powerful online experiences.</p>
-            <a href="#services" class="cta-button">Explore Our Services</a>
-        </div>
-    </section>
+    <section class="hero">
+    <!-- Floating Circles -->
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
 
+    <!-- Content -->
+    <div class="hero-content">
+      <h1>Welcome to Our Digital Idea</h1>
+      <p>Crafting stunning websites and powerful online experiences.</p>
+      <a href="#services" class="cta-button">Explore Our Services</a>
+    </div>
+  </section>
     <section id="about" class="content-section">
         <h2>About Us</h2>
         <div class="about-container">
             <div class="about-image">
-                <img src="secend logo.jpg" alt="About Our Company">
+                <img src="logo.png" alt="About Our Company">
             </div>
             <div class="about-text">
                 <p>We are a dedicated team of creative professionals passionate about bringing your ideas to life. With years of experience in web design, development, and digital marketing, we help businesses like yours grow and succeed in the ever-evolving online landscape.</p>
